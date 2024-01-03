@@ -15,26 +15,24 @@ RSpec.describe Ship do
     expect(@cruiser.health).to eq(3)
   end
 
-  it '#sunk?' do
-    expect(@cruiser.sunk?).to be false
-  end
+  describe '#sunk?' do 
+    it 'sinks after three #hit instances' do
+      expect(@cruiser.sunk?).to be false 
+    
+      @cruiser.hit
 
-  it '#hit' do
-    @cruiser.hit
-
-    expect(@cruiser.health).to eq(2)
+      expect(@cruiser.health).to eq(2)
       
-    @cruiser.hit
+      @cruiser.hit
     
-    expect(@cruiser.health).to eq(1)
+      expect(@cruiser.health).to eq(1)
+
+      expect(@cruiser.sunk?).to be false
+
+      @cruiser.hit
+    
+      expect(@cruiser.sunk?).to be true
+    end
   end
 
-  xit 'sinks ship when #hit three times' do
-
-    expect(@cruiser.sunk?).to be false
-
-    @cruiser.hit
-    
-    expect(@cruiser.sunk?).to be true
-  end
 end
