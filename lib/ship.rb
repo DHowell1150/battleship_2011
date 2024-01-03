@@ -22,10 +22,3 @@ class Ship
   end
 
 end
-
-
-    # if @health == 0
-    #   @sunk = true 
-    # else
-    #   @sunk = false
-    # end
