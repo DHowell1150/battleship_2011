@@ -17,20 +17,17 @@ RSpec.describe Ship do
 
   describe '#sunk?' do 
     it 'sinks after three #hit instances' do
+    
       expect(@cruiser.sunk?).to be false 
     
       @cruiser.hit
-
       expect(@cruiser.health).to eq(2)
       
       @cruiser.hit
-    
       expect(@cruiser.health).to eq(1)
-
       expect(@cruiser.sunk?).to be false
 
       @cruiser.hit
-    
       expect(@cruiser.sunk?).to be true
     end
   end
