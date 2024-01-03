@@ -1,7 +1,23 @@
 require './lib/ship'
 require './lib/cell'
 
-text
+RSpec.describe Cell do
+  before 'each' do 
+
+  end
+
+  it 'exists' do
+
+  end
+
+  it 'has readable attributes' do
+
+  end
+
+  it 'can #place_ship' do
+
+  end
+end
 
 
 
