@@ -1,5 +1,6 @@
 require './lib/ship'
 require 'rspec'
+require 'pry'
 
 RSpec.describe Ship do
   before 'each' do 
