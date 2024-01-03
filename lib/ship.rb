@@ -12,4 +12,8 @@ class Ship
     @sunk 
   end
 
+  def hit
+    
+  end
+
 end
