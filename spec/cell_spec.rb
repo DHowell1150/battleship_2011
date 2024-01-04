@@ -1,37 +1,86 @@
-require './lib/board'
-
+require './lib/ship'
+require './lib/cell'
 
 RSpec.describe Cell do
   before 'each' do 
-    @board = Board.new
+    @cell_1 = Cell.new("B4")
+    @cell_2 = Cell.new("C3")
+    @cruiser = Ship.new("Cruiser", 3)
   end
 
   it 'exists' do
-    expect(@board).to be_a(Board)
+    expect(@cell_1).to be_an_instance_of(Cell)
   end
 
-  it 'has readable attributes' do #What is tabbing for a hash supposed to look like here?
-  expect(board.cells).to eq({
-      "A1" => #<Cell:0x00007ff0728a3f58...>,
-      "A2" => #<Cell:0x00007ff0728a3ee0...>,
-      "A3" => #<Cell:0x00007ff0728a3e68...>,
-      "A4" => #<Cell:0x00007ff0728a3df0...>,
-      "B1" => #<Cell:0x00007ff0728a3d78...>,
-      "B2" => #<Cell:0x00007ff0728a3d00...>,
-      "B3" => #<Cell:0x00007ff0728a3c88...>,
-      "B4" => #<Cell:0x00007ff0728a3c10...>,
-      "C1" => #<Cell:0x00007ff0728a3b98...>,
-      "C2" => #<Cell:0x00007ff0728a3b20...>,
-      "C3" => #<Cell:0x00007ff0728a3aa8...>,
-      "C4" => #<Cell:0x00007ff0728a3a30...>,
-      "D1" => #<Cell:0x00007ff0728a39b8...>,
-      "D2" => #<Cell:0x00007ff0728a3940...>,
-      "D3" => #<Cell:0x00007ff0728a38c8...>,
-      "D4" => #<Cell:0x00007ff0728a3850...>
-      })
+  it 'has readable attributes' do
+    expect(@cell_1.coordinate).to eq("B4")
+    expect(@cell_1.ship).to eq(nil)
+
   end
 
+  it 'can #place_ship' do
+    expect(@cell_1.empty?).to eq(true)
 
+    @cell_1.place_ship(@cruiser)
+    expect(@cell_1.ship).to eq(@cruiser)
+    expect(@cell_1.empty?).to eq(false)
+  end
+
+  it 'can be #fired_upon' do
+    expect(@cell_1.fired_upon?).to eq(false)
+
+    @cell_1.fire_upon
+
+    expect(@cell_1.fired_upon?).to eq(true)
+  end
+
+  describe '#render' do
+    it 'if fired upon, X is rendered when ship is sunk' do
+      expect(@cell_2.render).to eq(".")
+      
+      @cell_2.place_ship(@cruiser)
+
+      @cell_2.fire_upon
+      expect(@cell_2.render).to eq("H")
+      expect(@cruiser.sunk?).to eq(false)
+      
+      @cruiser.hit
+      @cruiser.hit
+      expect(@cruiser.sunk?).to eq(true)
+      expect(@cell_2.render).to eq("X")
+    end
+
+    it 'if fired upon, M is rendered when no ship is in cell' do
+      @cell_2.place_ship(@cruiser)
+
+      expect(@cell_1.render).to eq(".")
+      expect(@cell_2.render).to eq(".")
+      
+      @cell_1.fire_upon
+
+      expect(@cell_1.render).to eq("M")
+      expect(@cruiser.sunk?).to eq(false)
+    end
+  
+    it 'if fired upon, H is rendered when ship is in cell' do
+      @cell_2.place_ship(@cruiser)
+
+      # expect(@cell_2.render).to eq(".")
+      # # Indicate that we want to show a ship with the optional argument
+      # expect(@cell_2.render(true)).to eq("S")
+
+      @cell_2.fire_upon
+
+      expect(@cell_2.render).to eq("H")
+      expect(@cruiser.sunk?).to eq(false)
+    end
+
+    it 'renders . if the cell has not been fired upon' do
+      @cell_2.place_ship(@cruiser)
+
+      expect(@cell_1.render).to eq(".")
+    end
+  end
 end
 
 
@@ -39,22 +88,6 @@ end
 
 
 
-####
-
-pry(main)> board.valid_coordinate?("A1")
-# => true
-
-pry(main)> board.valid_coordinate?("D4")
-# => true
-
-pry(main)> board.valid_coordinate?("A5")
-# => false
-
-pry(main)> board.valid_coordinate?("E1")
-# => false
-
-pry(main)> board.valid_coordinate?("A22")
-# => false
 
 
 
