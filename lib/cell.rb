@@ -30,13 +30,13 @@ class Cell
   end
 
   def render
-    if (fired_upon?) && (!empty?) && (@ship.sunk?)
-      "S"
-    elsif (fired_upon?) && empty?
-      "M"
-    elsif (fired_upon?) && empty? && @ship.health == 0
+    # if (fired_upon?) && (!empty?) && (@ship.sunk?)
+    #   "S"
+    if !empty? && (fired_upon?) && @ship.sunk?
       "X"
-    elsif (fired_upon?) && !empty?
+    elsif empty? && (fired_upon?)
+      "M"
+    elsif !empty? && (fired_upon?)
       "H"
     else
       "."
