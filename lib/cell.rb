@@ -29,7 +29,17 @@ class Cell
     end
   end
 
-  # def render
-    
-  # end
+  def render
+    if (fired_upon?) && (!empty?) && (@ship.sunk?)
+      "S"
+    elsif (fired_upon?) && empty?
+      "M"
+    elsif (fired_upon?) && empty? && @ship.health == 0
+      "X"
+    elsif (fired_upon?) && !empty?
+      "H"
+    else
+      "."
+    end
+  end
 end
