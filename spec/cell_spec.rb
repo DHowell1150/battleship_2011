@@ -1,7 +1,45 @@
 require './lib/ship'
 require './lib/cell'
 
-text
+RSpec.describe Cell do
+  before 'each' do 
+
+  end
+
+  it 'exists' do
+
+  end
+
+  it 'has readable attributes' do
+
+  end
+
+  it 'can #place_ship' do
+
+  end
+
+  it 'can be #fired_upon' do
+
+  end
+
+  describe '#render' do
+    it 'renders . if the cell has not been fired upon' do
+
+    end
+    
+    it 'if fired upon, M is rendered when no ship is in cell' do
+
+    end
+
+    it 'if fired upon, H is rendered when ship is in cell' do
+
+    end
+
+    it 'if fired upon, X is rendered when ship is sunk' do
+
+    end
+  end
+end
 
 
 
