@@ -17,19 +17,21 @@ RSpec.describe Cell do
 
   end
 
-  # xit 'can #place_ship' do
-  # expect(@cell.empty?).to eq(true)
+  it 'can #place_ship' do
+    expect(@cell.empty?).to eq(true)
 
-  # @cell.place_ship(@cruiser)
-  # expect(@cell.ship).to eq(@cruiser)
-  # expect(@cell.empty?).to eq(false)
-  # end
+    @cell.place_ship(@cruiser)
+    expect(@cell.ship).to eq(@cruiser)
+    expect(@cell.empty?).to eq(false)
+  end
 
-  # xit 'can be #fired_upon' do
-  # expect(@).to eq()
-  # expect(@).to eq()
-  # expect(@).to eq()
-  # end
+  it 'can be #fired_upon' do
+    expect(@cell.fired_upon?).to eq(false)
+
+    @cell.fire_upon
+    expect(@cell.ship.health).to eq(2)
+    expect(@cell.fired_upon?).to eq(true)
+  end
 
   # describe '#render' do
   #   xit 'renders . if the cell has not been fired upon' do
@@ -60,34 +62,10 @@ end
 
 
 
-# 
-# # => false
+
 # Additionally, a cell knows when it has been fired upon. When it is fired upon, the cell’s ship should be damaged if it has one:
 
-# require './lib/ship'
-# # => true
 
-# require './lib/cell'
-# # => true
-
-# cell = Cell.new("B4")
-# # => #<Cell:0x00007f84f0ad4720...>
-
-# cruiser = Ship.new("Cruiser", 3)
-# # => #<Ship:0x00007f84f0891238...>
-
-# cell.place_ship(cruiser)
-
-# cell.fired_upon?
-# # => false
-
-# cell.fire_upon
-
-# cell.ship.health
-# # => 2
-
-# cell.fired_upon?
-# # => true
 # Finally, a Cell will have a method called render which returns a String representation of the Cell for when we need to print the board. A cell can potentially be rendered as:
 
 # ”.” if the cell has not been fired upon.
