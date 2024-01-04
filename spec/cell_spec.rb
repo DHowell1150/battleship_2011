@@ -3,70 +3,64 @@ require './lib/cell'
 
 RSpec.describe Cell do
   before 'each' do 
-
+    @cell = Cell.new("B4")
+    @cruiser = Ship.new("Cruiser", 3)
   end
 
   it 'exists' do
-
+    expect(@cell).to be_an_instance_of(Cell)
   end
 
   it 'has readable attributes' do
+    expect(@cell.coordinate).to eq("B4")
+    expect(@cell.ship).to eq(nil)
 
   end
 
-  it 'can #place_ship' do
+  # xit 'can #place_ship' do
+  # expect(@cell.empty?).to eq(true)
 
-  end
+  # @cell.place_ship(@cruiser)
+  # expect(@cell.ship).to eq(@cruiser)
+  # expect(@cell.empty?).to eq(false)
+  # end
 
-  it 'can be #fired_upon' do
+  # xit 'can be #fired_upon' do
+  # expect(@).to eq()
+  # expect(@).to eq()
+  # expect(@).to eq()
+  # end
 
-  end
-
-  describe '#render' do
-    it 'renders . if the cell has not been fired upon' do
-
-    end
+  # describe '#render' do
+  #   xit 'renders . if the cell has not been fired upon' do
+  #     expect(@).to eq()
+  #     expect(@).to eq()
+  #     expect(@).to eq()
+  #   end
     
-    it 'if fired upon, M is rendered when no ship is in cell' do
+  #   xit 'if fired upon, M is rendered when no ship is in cell' do
+  #     expect(@).to eq()
+  #     expect(@).to eq()
+  #     expect(@).to eq()
+  #   end
 
-    end
+  #   xit 'if fired upon, H is rendered when ship is in cell' do
+  #     expect(@).to eq()
+  #     expect(@).to eq()
+  #     expect(@).to eq()
+  #   end
 
-    it 'if fired upon, H is rendered when ship is in cell' do
-
-    end
-
-    it 'if fired upon, X is rendered when ship is sunk' do
-
-    end
-  end
+  #   xit 'if fired upon, X is rendered when ship is sunk' do
+  #     expect(@).to eq()
+  #     expect(@).to eq()
+  #     expect(@).to eq()
+  #   end
+  # end
 end
 
 
 
-
-
-
-# cell = Cell.new("B4")
-# # => #<Cell:0x00007f84f0ad4720...>
-
-# cell.coordinate
-# # => "B4"
-
-# cell.ship
-# # => nil
-
-# cell.empty?
-# # => true
-
-# cruiser = Ship.new("Cruiser", 3)
-# # => #<Ship:0x00007f84f0891238...>
-
-# cell.place_ship(cruiser)
-
-# cell.ship
-# # => #<Ship:0x00007f84f0891238...>
-
-# cell.empty?
+# 
 # # => false
 # Additionally, a cell knows when it has been fired upon. When it is fired upon, the cell’s ship should be damaged if it has one:
 

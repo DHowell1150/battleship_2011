@@ -1,23 +1,24 @@
 class Cell
-  attr_reader 
+  attr_reader :coordinate, :ship 
 
-  def initialize()
-
+  def initialize(coordinate)
+    @coordinate = coordinate
+    @ship = ship 
   end
 
-  def place_ship()
+  # def place_ship()
 
-  end
+  # end
 
-  def fire_upon
+  # def fire_upon
 
-  end
+  # end
 
-  def fired_upon?
+  # def fired_upon?
 
-  end
+  # end
 
-  def render
+  # def render
     
-  end
+  # end
 end
