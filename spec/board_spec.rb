@@ -1,5 +1,20 @@
 require 
 
+RSpec.describe Board do
+  before 'each' do
+
+  end
+
+  it 'exists' do
+
+  end
+
+  it 'has readable attributes' do
+
+  end
+
+  
+end
 text 
 
 

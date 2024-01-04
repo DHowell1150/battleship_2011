@@ -14,6 +14,10 @@ class Cell
   end
 
   def fired_upon?
+
+  end
+
+  def render
     
   end
 end
