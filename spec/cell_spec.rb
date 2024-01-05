@@ -30,7 +30,7 @@ RSpec.describe Cell do
     expect(@cell_1.fired_upon?).to eq(false)
 
     @cell_1.fire_upon
-
+    
     expect(@cell_1.fired_upon?).to eq(true)
   end
 
@@ -55,6 +55,7 @@ RSpec.describe Cell do
 
       expect(@cell_1.render).to eq(".")
       expect(@cell_2.render).to eq(".")
+
       
       @cell_1.fire_upon
 
@@ -81,11 +82,10 @@ RSpec.describe Cell do
       expect(@cell_1.render).to eq(".")
     end
   end
-
-  it 'can be #fired_upon' do
-    expect(@cell_1.fired_upon?).to eq(false)
-
-    @cell_1.fire_upon
-    expect(@cell_1.fired_upon?).to eq(true)
-  end
 end
+
+
+
+
+
+
