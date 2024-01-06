@@ -21,7 +21,7 @@ class Board
     cell_coordinates
   end
 
-  def valid_coordinates?(coordinate)
+  def valid_coordinate?(coordinate)
     #@cells.has_key? -> hash docs
     #rv is t/f
 
