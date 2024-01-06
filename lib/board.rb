@@ -25,23 +25,46 @@ class Board
     @cells.has_key?(coordinate)
   end
 
-  def valid_placement?(ship, coordinates)
-    
-    require 'pry' ; binding.pry
-    match_ship_length
-
-    # coordinates 
-  end
-  
-  def match_ship_length
+  def match_ship_length(ship, coordinates)
     ship.length == coordinates.length
   end
 
-  def coord_consecutive?
+#   def ascending_order?(coordinates)
 
-  end
-  #Helper methods for:
-  #consecutive?
-  #diagonal
-  #
-end
+#   end
+  
+#   def horizontal?(coordinates)
+#     #still need to test for @cruiser
+#     #evaluates that submarine coordinates are consecutive horizontally eg [A1, A2]
+#     if (coordinates[0][1] + 1 == coordinates[1][1]) && (coordinate[0][0] == coordinates[1][0])
+#       #(1 + 1 == 2) && ("A" == "A")
+#       true
+#     end
+#   end 
+
+#   def vertical?(coordinates)
+#     #consecutive letters with same numbers 
+#     if (coordinates[0][1] + 1 == coordinates[1][1]) && (coordinate[0][0] == coordinates[1][1])
+#       #below is evaluating if they are consecutive vertically
+#     elsif (coordinates[0][1] + 1 == coordinates[1][1])
+#       true
+#     end
+#     #What do I need to pass into this to test it
+#     #rewrite the test to match this method.
+#   end
+
+#   def consecutive?(coordinates)
+
+#   end
+
+#   def diagonal?(coordinates)
+
+#   end
+
+#   #Helper methods for:
+#   #ascending order
+#   #horizontal
+#   #vertical
+#   #diagonal
+#   #
+# end
