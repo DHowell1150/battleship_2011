@@ -24,4 +24,24 @@ class Board
   def valid_coordinate?(coordinate)
     @cells.has_key?(coordinate)
   end
+
+  def valid_placement?(ship, coordinates)
+    
+    require 'pry' ; binding.pry
+    match_ship_length
+
+    # coordinates 
+  end
+  
+  def match_ship_length
+    ship.length == coordinates.length
+  end
+
+  def coord_consecutive?
+
+  end
+  #Helper methods for:
+  #consecutive?
+  #diagonal
+  #
 end
