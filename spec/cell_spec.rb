@@ -54,6 +54,8 @@ RSpec.describe Cell do
       @cell_2.place_ship(@cruiser)
 
       expect(@cell_1.render).to eq(".")
+      expect(@cell_2.render).to eq(".")
+
       
       @cell_1.fire_upon
 
@@ -81,9 +83,6 @@ RSpec.describe Cell do
     end
   end
 end
-
-
-
 
 
 
