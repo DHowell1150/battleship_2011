@@ -1,40 +1,30 @@
 class Board
+  attr_reader :cells
+  #This is a constant
+  BOARD_POSITIONS = ["A1", "A2", "A3", "A4",
+                      "B1", "B2", "B3", "B4",
+                      "C1", "C2", "C3", "C4",
+                      "D1", "D2", "D3", "D4"]
+  
+  def initialize
+    @cells = load_cells
+  end
 
-  def initialize(data)
-    # @cell_1 = data[:@cell_1]
-    # @cell_2 = data[:@cell_2]
-    # @cell_3 = data[:@cell_3]
-    # @cell_4 = data[:@cell_4]
-    # @cell_5 = data[:@cell_5]
-    # @cell_6 = data[:@cell_6]
-    # @cell_7 = data[:@cell_7]
-    # @cell_8 = data[:@cell_8]
-    # @cell_9 = data[:@cell_9]
-    # @cell_10 = data[:@cell_10]
-    # @cell_11 = data[:@cell_11]
-    # @cell_12 = data[:@cell_12]
-    # @cell_13 = data[:@cell_13]
-    # @cell_14 = data[:@cell_14]
-    # @cell_15 = data[:@cell_15]
-    # @cell_16 = data[:@cell_16]
+  #Creates Board's cells and assigns them a position
+  #Will return the hash in the interaction pattern
+  def load_cells
+    #Iterate over B_P to create the hash.
+    cell_coordinates = Hash.new
+    BOARD_POSITIONS.each do |coordinate|
+      cell_coordinates[coordinate] = Cell.new(coordinate)
+    end
+    cell_coordinates
+  end
 
-    
-      # "A1" => @cell_1
-      # "A2" => @cell_2
-      # "A3" => @cell_3
-      # "A4" => @cell_4
-      # "B1" => @cell_5
-      # "B2" => @cell_6
-      # "B3" => #<Cell:0x00007ff0728a3c88...>,
-      # "B4" => #<Cell:0x00007ff0728a3c10...>,
-      # "C1" => #<Cell:0x00007ff0728a3b98...>,
-      # "C2" => #<Cell:0x00007ff0728a3b20...>,
-      # "C3" => #<Cell:0x00007ff0728a3aa8...>,
-      # "C4" => #<Cell:0x00007ff0728a3a30...>,
-      # "D1" => #<Cell:0x00007ff0728a39b8...>,
-      # "D2" => #<Cell:0x00007ff0728a3940...>,
-      # "D3" => #<Cell:0x00007ff0728a38c8...>,
-      # "D4" => #<Cell:0x00007ff0728a3850...>
-      # })
+  def valid_coordinates?(coordinate)
+    #@cells.has_key? -> hash docs
+    #rv is t/f
+
+    #
   end
 end
