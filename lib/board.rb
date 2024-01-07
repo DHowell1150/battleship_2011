@@ -26,9 +26,15 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    length_valid?(ship, coordinates) && consecutive_placement?(coordinates) 
+    length_valid?(ship, coordinates) && consecutive_placement?(coordinates) #&& coordinates_empty?(coordinates)
   end
   
+  # def coordinates_empty?(coordinates)
+  #   coordinates.each do |coordinate|
+  #     @cells[coordinate].empty?
+  #   end
+  # end
+
   def length_valid?(ship, coordinates)
     ship.length == coordinates.length
   end
@@ -106,7 +112,7 @@ class Board
 
   def place(ship, coordinates)
     coordinates.each do |coordinate|
-    require 'pry' ; binding.pry
+    @cells[coordinate].place_ship(ship)
     end
   end
 end

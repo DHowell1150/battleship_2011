@@ -35,6 +35,16 @@ RSpec.describe Cell do
   end
 
   describe '#render' do
+    it 'renders S if cell is empty and not fired_upon' do
+      @cell_2.place_ship(@cruiser)
+      
+      expect(@cell_2.render(true)).to eq("S")
+
+      @cell_2.fire_upon
+
+      expect(@cell_2.render).to eq("H")
+    end
+    
     it 'if fired upon, X is rendered when ship is sunk' do
       expect(@cell_2.render).to eq(".")
       
@@ -54,7 +64,7 @@ RSpec.describe Cell do
       @cell_2.place_ship(@cruiser)
 
       expect(@cell_1.render).to eq(".")
-      expect(@cell_2.render).to eq(".")
+      expect(@cell_2.render).to eq("S")
 
       
       @cell_1.fire_upon
