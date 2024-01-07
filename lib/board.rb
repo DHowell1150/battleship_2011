@@ -25,58 +25,90 @@ class Board
     @cells.has_key?(coordinate)
   end
 
-  def match_ship_length(ship, coordinates)
+  def length_valid?(ship, coordinates)
     ship.length == coordinates.length
   end
 
-  def ascending_order?(coordinates)
-    #evaluates for submarine ["B1", "C1"] 
-    # (B(66) + 1 == C (67))                                 &&           (1 == 1)
-    if (coordinates[0][0].ord + 1 == coordinates[1][0].ord) && (coordinates[0][1] == coordinates[1][1])
+
+  def valid_placement?(ship, coordinates)
+    length_valid?(ship, coordinates) && consecutive_placement?(coordinates) 
+
+  end
+
+  def consecutive_placement?(coordinates)
+    horizontal?(coordinates) || vertical?(coordinates)
+    # letters = coordinates.map { |coord| coord[0] }.sort
+    # numbers = coordinates.map { |coord| coord[1].to_i }
+  end
+
+  def same_letter?(coordinates)
+    letters = coordinates.map do |coordinate|
+      coordinate.chr 
+    end
+
+    if letters.uniq.count == 1
       true
-      #evaluate for cruiser ["A1", "A2", "A3"]
-                      #  "A"66                           "A" 66                      "A" 66                 "1" +1 = 2                           2
-    elsif ((coordinates[0][0].ord + 1 == coordinates[1][0].ord + 1) && (coordinates[1][0].ord + 1 == coordinates[2][0].ord + 1)) && ((coordinates[0][1].to_i + 1 == coordinates[1][1].to_i) &&  (coordinates[1][1].to_i + 1 == coordinates[2][1].to_i))
-      true
-    else
+    else 
       false
     end
   end
 
-  
   def horizontal?(coordinates)
     #still need to test for @cruiser
-    #evaluates that submarine coordinates are consecutive horizontally eg [A2, A3]
+    #evaluates that submarine coordinates are consecutive horizontally eg [Af, A3]
     #(2 + 1 == 3)                                             &&       ("A" == "A")
-    if (coordinates[0][1].to_i + 1 == coordinates[1][1].to_i) && (coordinates[0][0] == coordinates[1][0])
-      true
-    else
-      false
+    first_coord_num_plus_one = coordinates[0][1].to_i + 1
+    second_coord_num = coordinates[1][1].to_i
+    second_coord_num_plus_one = second_coord_num + 1
+
+    if coordinates.count == 3
+      third_coord_num = coordinates[2][1].to_i
+      if (first_coord_num_plus_one == second_coord_num) && (second_coord_num_plus_one == third_coord_num) && same_letter?(coordinates)
+        true
+      else
+        false
+      end
+    elsif coordinates.count == 2       #[A1, A2]
+      if (first_coord_num_plus_one == second_coord_num) && same_letter?(coordinates)
+        true
+      else
+        false
+      end
     end
   end 
 
-  def vertical?(coordinates)
-    #consecutive  with letters with same numbers ["B1", "C1"]
-    if ((coordinates[0][0].ord + 1 == coordinates[1][0].ord)   &&  (coordinates[0][1].to_i == coordinates[1][1].to_i))
+  def same_number?(coordinates)
+    numbers = coordinates.map do |coordinate|
+      coordinate[-1]
+    end
+
+    if numbers.uniq.count == 1
       true
-    else
+    else 
       false
     end
   end
 
-#   def consecutive?(coordinates)
+  def vertical?(coordinates) #["B1", "C1", "D1"]
+    #consecutive  with letters with same numbers ["B1", "C1"]
+    first_coord_letter_plus_one = coordinates[0][0].ord + 1
+    second_coord_letter = coordinates[1][0].ord
+    second_coord_letter_plus_one = second_coord_letter + 1
 
-#   end
-
-#   def diagonal?(coordinates)
-
-#   end
-
-#   #Helper methods for:
-#   #ascending order
-#   #horizontal
-#   #vertical
-#   #diagonal
-#   #
+    if coordinates.count == 2
+      if ((first_coord_letter_plus_one == second_coord_letter)   &&  same_number?(coordinates))
+        true
+      else
+        false
+      end
+    elsif coordinates.count == 3
+      third_coord_letter = coordinates[2][0].ord
+      if ((first_coord_letter_plus_one ==  second_coord_letter && (second_coord_letter_plus_one == third_coord_letter)) &&  same_number?(coordinates))
+        true
+      else
+        false
+      end
+    end
+  end
 end
 
