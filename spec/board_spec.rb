@@ -55,9 +55,11 @@ RSpec.describe Board do
   #I have access to #place_ship in Cell
     it 'can place_ship' do
       @board.place(@cruiser, ["A1", "A2", "A3"])  
+
       @cell_1 = @board.cells["A1"]
       @cell_2 = @board.cells["A2"]
       @cell_3 = @board.cells["A3"]   
+
       expect(@cell_1.ship).to eq(@cruiser)
       expect(@cell_2.ship).to eq(@cruiser)
       expect(@cell_3.ship).to eq(@cruiser)
