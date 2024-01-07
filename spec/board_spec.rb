@@ -66,18 +66,19 @@ RSpec.describe Board do
     end 
   end
 
-  # describe '#vertical' do
-  #   it "returns true when coordinates are #vertical" do
-  #     expect(@board.vertical?(["B1", "C1"])).to be true
-  #     expect(@board.vertical?(["A1" "B1", "C1"])).to be true
-  #   end
+  describe '#vertical' do
+    it "returns true when coordinates are #vertical" do
+      expect(@board.vertical?(["B1", "C1"])).to be true
+      # expect(@board.vertical?(["A1" "B1", "C1"])).to be true
+    end
 
-  #   it "returns false when coordinates are not #vertical" do
-  #     expect(@board.vertical?(["B1", "B2"])).to be false
-  #     expect(@board.vertical?(["A1" "A2", "A3"])).to be false
-  #   end
-  # end
+    it "returns false when coordinates are not #vertical" do
+      expect(@board.vertical?(["A1", "A2"])).to be false
+      # expect(@board.vertical?(["A1" "A2", "A3"])).to be false
+    end
+  end
 
+  # THIS TEST/METHOD COMMENTED OUT BECAUSE IT'S IMPLIED IN #HORIZONTAL/#VERTICAL
   # describe "#consecutive" do
   #   it "returns false when not consecutive" do
   #     expect(@board.consecutive?(["B1", "C4"])).to be false

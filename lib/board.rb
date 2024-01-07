@@ -31,7 +31,7 @@ class Board
 
   def ascending_order?(coordinates)
     #evaluates for submarine ["B1", "C1"] 
-    # (B(66) + 1 == C (67))  &&  (1 == 1)
+    # (B(66) + 1 == C (67))                                 &&           (1 == 1)
     if (coordinates[0][0].ord + 1 == coordinates[1][0].ord) && (coordinates[0][1] == coordinates[1][1])
       true
       #evaluate for cruiser ["A1", "A2", "A3"]
@@ -47,24 +47,22 @@ class Board
   def horizontal?(coordinates)
     #still need to test for @cruiser
     #evaluates that submarine coordinates are consecutive horizontally eg [A2, A3]
+    #(2 + 1 == 3)                                             &&       ("A" == "A")
     if (coordinates[0][1].to_i + 1 == coordinates[1][1].to_i) && (coordinates[0][0] == coordinates[1][0])
-      #(2 + 1 == 3) && ("A" == "A")
       true
     else
       false
     end
   end 
 
-#   def vertical?(coordinates)
-#     #consecutive letters with same numbers 
-#     if (coordinates[0][1] + 1 == coordinates[1][1]) && (coordinate[0][0] == coordinates[1][1])
-#       #below is evaluating if they are consecutive vertically
-#     elsif (coordinates[0][1] + 1 == coordinates[1][1])
-#       true
-#     end
-#     #What do I need to pass into this to test it
-#     #rewrite the test to match this method.
-#   end
+  def vertical?(coordinates)
+    #consecutive  with letters with same numbers ["B1", "C1"]
+    if ((coordinates[0][0].ord + 1 == coordinates[1][0].ord)   &&  (coordinates[0][1].to_i == coordinates[1][1].to_i))
+      true
+    else
+      false
+    end
+  end
 
 #   def consecutive?(coordinates)
 
