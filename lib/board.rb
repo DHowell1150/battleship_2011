@@ -34,25 +34,26 @@ class Board
     # (B(66) + 1 == C (67))  &&  (1 == 1)
     if (coordinates[0][0].ord + 1 == coordinates[1][0].ord) && (coordinates[0][1] == coordinates[1][1])
       true
-    else 
+      #evaluate for cruiser ["A1", "A2", "A3"]
+                      #  "A"66                           "A" 66                      "A" 66                 "1" +1 = 2                           2
+    elsif ((coordinates[0][0].ord + 1 == coordinates[1][0].ord + 1) && (coordinates[1][0].ord + 1 == coordinates[2][0].ord + 1)) && ((coordinates[0][1].to_i + 1 == coordinates[1][1].to_i) &&  (coordinates[1][1].to_i + 1 == coordinates[2][1].to_i))
+      true
+    else
       false
-
-    #   #evaluate for cruiser ["A1", "A2", "A3"]
-    #                   #  "A"66                           "A" 66                      "A" 66                 "1" +1 = 2                           2
-    # elsif ((coordinates[0][0].ord + 1 == coordinates[1][0].ord + 1) && (coordinates[1][0].ord + 1 == coordinates[2][0].ord + 1)) && #((coordinates[0][1] + 1 == coordinates[1][1]) &&  (coordinates[1][1] + 1 == coordinates[2][1]))
-    #   true
     end
   end
 
   
-#   def horizontal?(coordinates)
-#     #still need to test for @cruiser
-#     #evaluates that submarine coordinates are consecutive horizontally eg [A1, A2]
-#     if (coordinates[0][1] + 1 == coordinates[1][1]) && (coordinate[0][0] == coordinates[1][0])
-#       #(1 + 1 == 2) && ("A" == "A")
-#       true
-#     end
-#   end 
+  def horizontal?(coordinates)
+    #still need to test for @cruiser
+    #evaluates that submarine coordinates are consecutive horizontally eg [A2, A3]
+    if (coordinates[0][1].to_i + 1 == coordinates[1][1].to_i) && (coordinates[0][0] == coordinates[1][0])
+      #(2 + 1 == 3) && ("A" == "A")
+      true
+    else
+      false
+    end
+  end 
 
 #   def vertical?(coordinates)
 #     #consecutive letters with same numbers 

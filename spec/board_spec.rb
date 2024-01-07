@@ -50,21 +50,21 @@ RSpec.describe Board do
 
     it 'returns true if coordinates are ascending in order' do
       expect(@board.ascending_order?(["B1", "C1"])).to be true
-      # expect(@board.ascending_order?(["A1", "A2", "A3"])).to be true
+      expect(@board.ascending_order?(["A1", "A2", "A3"])).to be true
     end
   end
 
-  # describe '#horizontal' do
-  #   it "returns true when coordinates are #horizontal" do
-  #     expect(@board.horizontal?(["A2", "A3"])).to be true
-  #     # expect(@board.horizontal?(["A1", "A2", "A3"])).to be true
-  #   end
+  describe '#horizontal' do
+    it "returns true when coordinates are #horizontal" do
+      expect(@board.horizontal?(["A2", "A3"])).to be true
+      # expect(@board.horizontal?(["A1", "A2", "A3"])).to be true
+    end
 
-  #   it "returns false when coordinates are not #horizontal" do
-  #     expect(@board.horizontal?(["A2", "B2"])).to be false
-  #     # expect(@board.horizontal?(["A1", "B1", "C1"])).to be false
-  #   end 
-  # end
+    it "returns false when coordinates are not #horizontal" do
+      expect(@board.horizontal?(["A2", "B2"])).to be false
+      # expect(@board.horizontal?(["A1", "B1", "C1"])).to be false
+    end 
+  end
 
   # describe '#vertical' do
   #   it "returns true when coordinates are #vertical" do
