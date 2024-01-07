@@ -29,27 +29,21 @@ class Board
     ship.length == coordinates.length
   end
 
-  def ascending_submarine_order?(coordinates)
-    #["B1", "C1"] line 54
+  def ascending_order?(coordinates)
+    #evaluates for submarine ["B1", "C1"] 
     # (B(66) + 1 == C (67))  &&  (1 == 1)
-    require 'pry' ; binding.pry
-                                67                      66
     if (coordinates[0][0].ord + 1 == coordinates[1][0].ord) && (coordinates[0][1] == coordinates[1][1])
       true
     else 
       false
-      #need to evaluate for #cruiser
+
+    #   #evaluate for cruiser ["A1", "A2", "A3"]
+    #                   #  "A"66                           "A" 66                      "A" 66                 "1" +1 = 2                           2
+    # elsif ((coordinates[0][0].ord + 1 == coordinates[1][0].ord + 1) && (coordinates[1][0].ord + 1 == coordinates[2][0].ord + 1)) && #((coordinates[0][1] + 1 == coordinates[1][1]) &&  (coordinates[1][1] + 1 == coordinates[2][1]))
+    #   true
     end
   end
 
-  def ascending_cruiser_order?(coordinates)
-    require 'pry' ; binding.pry
-    if ((coordinates[0][0].ord + 1 == coordinates[1][0].ord + 1) == coordinates[2][0].ord) +1 && (coordinates[0][1] == coordinates[1][1]) && (coordinates[2][1])
-      true
-    else
-      false
-    end
-  end
   
 #   def horizontal?(coordinates)
 #     #still need to test for @cruiser
