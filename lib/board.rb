@@ -35,8 +35,6 @@ class Board
 
   def consecutive_placement?(coordinates)
     horizontal?(coordinates) || vertical?(coordinates)
-    # letters = coordinates.map { |coord| coord[0] }.sort
-    # numbers = coordinates.map { |coord| coord[1].to_i }
   end
 
   def same_letter?(coordinates)
@@ -90,7 +88,6 @@ class Board
     first_coord_letter_plus_one = coordinates[0][0].ord + 1
     second_coord_letter = coordinates[1][0].ord
     second_coord_letter_plus_one = second_coord_letter + 1
-require 'pry' ; binding.pry
     if coordinates.count == 2
       if ((first_coord_letter_plus_one == second_coord_letter)   &&  same_number?(coordinates))
         true
@@ -104,6 +101,12 @@ require 'pry' ; binding.pry
       else
         false
       end
+    end
+  end
+
+  def place(ship, coordinates)
+    coordinates.each do |coordinate|
+    require 'pry' ; binding.pry
     end
   end
 end
