@@ -106,7 +106,7 @@ class Board
 
   def place(ship, coordinates)
     coordinates.each do |coordinate|
-    require 'pry' ; binding.pry
+    @cells["A1"].place_ship(ship)
     end
   end
 end

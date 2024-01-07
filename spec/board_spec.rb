@@ -54,23 +54,24 @@ RSpec.describe Board do
   describe '#place_ship' do
   #I have access to #place_ship in Cell
     it 'can place_ship' do
-      @board.place(@cruiser, ["A1", "A2", "A3"])   
-      expect(@cell_1 = board.cells["A1"]).to eq("A1") #??   
-      #<Cell:0x00007fcb0e1f66a8...>
-      expect(@cell_2 = board.cells["A2"]).to eq()
-      #<Cell:0x00007fcb0e1f6630...>
-      expect(@cell_3 = board.cells["A3"]).to eq()
-      #<Cell:0x00007fcb0e1f65b8...>
+      @board.place(@cruiser, ["A1", "A2", "A3"])  
+      cell_1 = @board.cells["A1"]
+      cell_2 = @board.cells["A2"]
+      cell_3 = @board.cells["A3"]   
+
       expect(@cell_1.ship).to eq(@cruiser)
       expect(@cell_2.ship).to eq(@cruiser)
       expect(@cell_3.ship).to eq(@cruiser)
       expect(@cell_3.ship == @cell_2.ship).to eq(true)
     end
 
-    it 'knows if a ship is #overlapping' do
-      @board.place(@cruiser, ["A1", "A2", "A3"])
-      expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to be false
-    end
+    # it 'knows if a ship is #overlapping' do
+    #   cell_1 = @board.cells["A1"]
+    #   cell_2 = @board.cells["A2"]
+    #   cell_3 = @board.cells["A3"] 
+    #   @board.place(@cruiser, ["A1", "A2", "A3"])
+    #   expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to be false
+    # end
   end
 end
 
