@@ -106,7 +106,7 @@ class Board
 
   def place(ship, coordinates)
     coordinates.each do |coordinate|
-    @cells["A1"].place_ship(ship)
+    @cells[coordinate].place_ship(ship)
     end
   end
 end
